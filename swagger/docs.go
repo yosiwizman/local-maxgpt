@@ -119,7 +119,7 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/localai.GalleryModel"
+                            "$ref": "#/definitions/maxgpt.GalleryModel"
                         }
                     }
                 ],
