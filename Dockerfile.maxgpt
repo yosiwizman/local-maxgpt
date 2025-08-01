@@ -1,0 +1,31 @@
+FROM localai/localai:latest
+
+LABEL maintainer="Local MaxGPT Team"
+LABEL org.opencontainers.image.source https://github.com/yosiwizman/local-maxgpt
+LABEL org.opencontainers.image.description "Local MaxGPT is a locally-hosted AI system with MaxGPT branding and HRM-powered models for tennis betting predictions and general AI tasks."
+LABEL org.opencontainers.image.licenses MIT
+
+ENV HEALTHCHECK_ENDPOINT=http://localhost:8080/readyz
+
+WORKDIR /
+
+COPY core/http/static/maxgpt-theme.css /app/static/
+COPY core/http/views/ /app/views/
+COPY start.sh /app/
+COPY stop.sh /app/
+
+# Create models directory (will be mounted as volume)
+RUN mkdir -p /models
+
+RUN chmod +x /app/start.sh /app/stop.sh
+
+ENV LOCALAI_MODELS_PATH=/models
+ENV LOCALAI_GALLERIES='[{"name":"maxgpt","url":"https://raw.githubusercontent.com/yosiwizman/local-maxgpt/main/models/"}]'
+ENV LOCALAI_LOG_LEVEL=info
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD curl -f ${HEALTHCHECK_ENDPOINT} || exit 1
+
+VOLUME /models /backends
+EXPOSE 8080
+ENTRYPOINT [ "/entrypoint.sh" ]

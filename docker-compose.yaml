@@ -2,8 +2,11 @@ version: '3.8'
 
 services:
   local-maxgpt:
-    image: localai/localai:latest-gpu-nvidia-cuda-12
-    container_name: local-maxgpt
+    build:
+      context: .
+      dockerfile: Dockerfile.maxgpt
+    image: local-maxgpt-branded:latest
+    container_name: local-maxgpt-branded
     restart: unless-stopped
     ports:
       - "8080:8080"  # API and Web UI
@@ -13,11 +16,12 @@ services:
       - THREADS=8
       - CONTEXT_SIZE=2048
       - GPU_LAYERS=-1
-      - PRELOAD_MODELS_CONFIG=/models
+      - LOCALAI_GALLERIES='[{"name":"maxgpt","url":"https://raw.githubusercontent.com/yosiwizman/local-maxgpt/main/models/"}]'
     volumes:
       - ./models:/models
       - ./data:/data
       - ./images:/tmp/generated/images/
+      - ./converted_models:/converted_models
     deploy:
       resources:
         reservations:
