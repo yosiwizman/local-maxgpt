@@ -66,7 +66,7 @@ func RegisterLocalAIRoutes(router *fiber.App,
 	router.Post("/stores/find", localai.StoresFindEndpoint(ml, appConfig))
 
 	if !appConfig.DisableMetrics {
-		router.Get("/metrics", localai.LocalAIMetricsEndpoint())
+		router.Get("/metrics", localai.MaxGPTMetricsEndpoint())
 	}
 
 	router.Post("/video",
