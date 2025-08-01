@@ -24,7 +24,7 @@ func RegisterOpenAIRoutes(app *fiber.App,
 	// chat
 	chatChain := []fiber.Handler{
 		re.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_CHAT)),
-		re.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.OpenAIRequest) }),
+		re.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.OpenAIRequest) }),
 		re.SetOpenAIRequest,
 		openai.ChatEndpoint(application.BackendLoader(), application.ModelLoader(), application.TemplatesEvaluator(), application.ApplicationConfig()),
 	}
@@ -35,7 +35,7 @@ func RegisterOpenAIRoutes(app *fiber.App,
 	editChain := []fiber.Handler{
 		re.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_EDIT)),
 		re.BuildConstantDefaultModelNameMiddleware("gpt-4o"),
-		re.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.OpenAIRequest) }),
+		re.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.OpenAIRequest) }),
 		re.SetOpenAIRequest,
 		openai.EditEndpoint(application.BackendLoader(), application.ModelLoader(), application.TemplatesEvaluator(), application.ApplicationConfig()),
 	}
@@ -46,7 +46,7 @@ func RegisterOpenAIRoutes(app *fiber.App,
 	completionChain := []fiber.Handler{
 		re.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_COMPLETION)),
 		re.BuildConstantDefaultModelNameMiddleware("gpt-4o"),
-		re.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.OpenAIRequest) }),
+		re.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.OpenAIRequest) }),
 		re.SetOpenAIRequest,
 		openai.CompletionEndpoint(application.BackendLoader(), application.ModelLoader(), application.TemplatesEvaluator(), application.ApplicationConfig()),
 	}
@@ -58,7 +58,7 @@ func RegisterOpenAIRoutes(app *fiber.App,
 	embeddingChain := []fiber.Handler{
 		re.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_EMBEDDINGS)),
 		re.BuildConstantDefaultModelNameMiddleware("gpt-4o"),
-		re.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.OpenAIRequest) }),
+		re.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.OpenAIRequest) }),
 		re.SetOpenAIRequest,
 		openai.EmbeddingsEndpoint(application.BackendLoader(), application.ModelLoader(), application.ApplicationConfig()),
 	}
@@ -69,20 +69,20 @@ func RegisterOpenAIRoutes(app *fiber.App,
 	// audio
 	app.Post("/v1/audio/transcriptions",
 		re.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_TRANSCRIPT)),
-		re.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.OpenAIRequest) }),
+		re.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.OpenAIRequest) }),
 		re.SetOpenAIRequest,
 		openai.TranscriptEndpoint(application.BackendLoader(), application.ModelLoader(), application.ApplicationConfig()),
 	)
 
 	app.Post("/v1/audio/speech",
 		re.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_TTS)),
-		re.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.TTSRequest) }),
+		re.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.TTSRequest) }),
 		localai.TTSEndpoint(application.BackendLoader(), application.ModelLoader(), application.ApplicationConfig()))
 
 	// images
 	app.Post("/v1/images/generations",
 		re.BuildConstantDefaultModelNameMiddleware("stablediffusion"),
-		re.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.OpenAIRequest) }),
+		re.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.OpenAIRequest) }),
 		re.SetOpenAIRequest,
 		openai.ImageEndpoint(application.BackendLoader(), application.ModelLoader(), application.ApplicationConfig()))
 
