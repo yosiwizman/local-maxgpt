@@ -12,7 +12,7 @@ import (
 	"github.com/mudler/LocalAI/pkg/model"
 )
 
-func RegisterLocalAIRoutes(router *fiber.App,
+func RegisterMaxGPTRoutes(router *fiber.App,
 	requestExtractor *middleware.RequestExtractor,
 	cl *config.BackendConfigLoader,
 	ml *model.ModelLoader,
