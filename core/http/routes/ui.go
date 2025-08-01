@@ -28,7 +28,7 @@ func RegisterUIRoutes(app *fiber.App,
 	// P2P
 	app.Get("/p2p", func(c *fiber.Ctx) error {
 		summary := fiber.Map{
-			"Title":   "LocalAI - P2P dashboard",
+			"Title":   "MaxGPT - P2P dashboard",
 			"BaseURL": utils.BaseURL(c),
 			"Version": internal.PrintableVersion(),
 			//"Nodes":          p2p.GetAvailableNodes(""),
@@ -73,7 +73,7 @@ func RegisterUIRoutes(app *fiber.App,
 		}
 
 		summary := fiber.Map{
-			"Title":        "LocalAI - Talk",
+			"Title":        "MaxGPT - Talk",
 			"BaseURL":      utils.BaseURL(c),
 			"ModelsConfig": backendConfigs,
 			"Model":        backendConfigs[0],
@@ -104,12 +104,12 @@ func RegisterUIRoutes(app *fiber.App,
 			galleryConfigs[m.Name] = cfg
 		}
 
-		title := "LocalAI - Chat"
+		title := "MaxGPT - Chat"
 
 		for _, b := range backendConfigs {
 			if b.HasUsecases(config.FLAG_CHAT) {
 				modelThatCanBeUsed = b.Name
-				title = "LocalAI - Chat with " + modelThatCanBeUsed
+				title = "MaxGPT - Chat with " + modelThatCanBeUsed
 				break
 			}
 		}
@@ -144,7 +144,7 @@ func RegisterUIRoutes(app *fiber.App,
 		}
 
 		summary := fiber.Map{
-			"Title":               "LocalAI - Chat with " + c.Params("model"),
+			"Title":               "MaxGPT - Chat with " + c.Params("model"),
 			"BaseURL":             utils.BaseURL(c),
 			"ModelsConfig":        backendConfigs,
 			"GalleryConfig":       galleryConfigs,
@@ -162,7 +162,7 @@ func RegisterUIRoutes(app *fiber.App,
 		modelsWithoutConfig, _ := services.ListModels(cl, ml, config.NoFilterFn, services.LOOSE_ONLY)
 
 		summary := fiber.Map{
-			"Title":               "LocalAI - Generate images with " + c.Params("model"),
+			"Title":               "MaxGPT - Generate images with " + c.Params("model"),
 			"BaseURL":             utils.BaseURL(c),
 			"ModelsConfig":        backendConfigs,
 			"ModelsWithoutConfig": modelsWithoutConfig,
@@ -184,12 +184,12 @@ func RegisterUIRoutes(app *fiber.App,
 		}
 
 		modelThatCanBeUsed := ""
-		title := "LocalAI - Generate images"
+		title := "MaxGPT - Generate images"
 
 		for _, b := range backendConfigs {
 			if b.HasUsecases(config.FLAG_IMAGE) {
 				modelThatCanBeUsed = b.Name
-				title = "LocalAI - Generate images with " + modelThatCanBeUsed
+				title = "MaxGPT - Generate images with " + modelThatCanBeUsed
 				break
 			}
 		}
@@ -212,7 +212,7 @@ func RegisterUIRoutes(app *fiber.App,
 		modelsWithoutConfig, _ := services.ListModels(cl, ml, config.NoFilterFn, services.LOOSE_ONLY)
 
 		summary := fiber.Map{
-			"Title":               "LocalAI - Generate images with " + c.Params("model"),
+			"Title":               "MaxGPT - Generate audio with " + c.Params("model"),
 			"BaseURL":             utils.BaseURL(c),
 			"ModelsConfig":        backendConfigs,
 			"ModelsWithoutConfig": modelsWithoutConfig,
@@ -234,12 +234,12 @@ func RegisterUIRoutes(app *fiber.App,
 		}
 
 		modelThatCanBeUsed := ""
-		title := "LocalAI - Generate audio"
+		title := "MaxGPT - Generate audio"
 
 		for _, b := range backendConfigs {
 			if b.HasUsecases(config.FLAG_TTS) {
 				modelThatCanBeUsed = b.Name
-				title = "LocalAI - Generate audio with " + modelThatCanBeUsed
+				title = "MaxGPT - Generate audio with " + modelThatCanBeUsed
 				break
 			}
 		}

@@ -518,7 +518,7 @@ var _ = Describe("API test", func() {
 
 			galleries := []config.Gallery{
 				{
-					Name: "localai",
+					Name: "maxgpt",
 					URL:  "https://raw.githubusercontent.com/mudler/LocalAI/refs/heads/master/gallery/index.yaml",
 				},
 			}
@@ -571,7 +571,7 @@ var _ = Describe("API test", func() {
 
 			modelName := "qwen3-1.7b"
 			response := postModelApplyRequest("http://127.0.0.1:9090/models/apply", modelApplyRequest{
-				ID: "localai@" + modelName,
+				ID: "maxgpt@" + modelName,
 			})
 
 			Expect(response["uuid"]).ToNot(BeEmpty(), fmt.Sprint(response))
@@ -645,7 +645,7 @@ var _ = Describe("API test", func() {
 			}
 
 			response := postModelApplyRequest("http://127.0.0.1:9090/models/apply", modelApplyRequest{
-				ID: "localai@voice-en-us-kathleen-low",
+				ID: "maxgpt@voice-en-us-kathleen-low",
 			})
 
 			Expect(response["uuid"]).ToNot(BeEmpty(), fmt.Sprint(response))
@@ -673,7 +673,7 @@ var _ = Describe("API test", func() {
 			}
 
 			response := postModelApplyRequest("http://127.0.0.1:9090/models/apply", modelApplyRequest{
-				ID:   "localai@sd-1.5-ggml",
+				ID:   "maxgpt@sd-1.5-ggml",
 				Name: "stablediffusion",
 			})
 

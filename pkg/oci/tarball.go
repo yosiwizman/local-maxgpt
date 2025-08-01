@@ -40,7 +40,7 @@ func imageFromTar(imagename, architecture, OS string, opener func() (io.ReadClos
 	img, err := mutate.Append(baseImage, mutate.Addendum{
 		Layer: layer,
 		History: v1.History{
-			CreatedBy: "localai",
+			CreatedBy: "maxgpt",
 			Comment:   "Custom image",
 		},
 	})

@@ -13,7 +13,7 @@ import (
 func Dashboard() func(*fiber.Ctx) error {
 	return func(c *fiber.Ctx) error {
 		summary := fiber.Map{
-			"Title":   "LocalAI API - " + internal.PrintableVersion(),
+			"Title":   "MaxGPT API - " + internal.PrintableVersion(),
 			"Version": internal.PrintableVersion(),
 			"BaseURL": utils.BaseURL(c),
 		}

@@ -12,7 +12,7 @@ var (
 	localAIURL = os.Getenv("LOCALAI_API")
 )
 
-func TestLocalAI(t *testing.T) {
+func TestMaxGPT(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "LocalAI E2E test suite")
+	RunSpecs(t, "MaxGPT E2E test suite")
 }

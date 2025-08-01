@@ -99,7 +99,7 @@ func (pw *progressWriter) Write(p []byte) (int, error) {
 // ExtractOCIImage will extract a given targetImage into a given targetDestination
 func ExtractOCIImage(img v1.Image, imageRef string, targetDestination string, downloadStatus func(string, string, string, float64)) error {
 	// Create a temporary tar file
-	tmpTarFile, err := os.CreateTemp("", "localai-oci-*.tar")
+	tmpTarFile, err := os.CreateTemp("", "maxgpt-oci-*.tar")
 	if err != nil {
 		return fmt.Errorf("failed to create temporary tar file: %v", err)
 	}
@@ -225,7 +225,7 @@ func DownloadOCIImageTar(img v1.Image, imageRef string, tarFilePath string, down
 	}
 
 	// Create a temporary directory to store the compressed layers
-	tmpDir, err := os.MkdirTemp("", "localai-oci-layers-*")
+	tmpDir, err := os.MkdirTemp("", "maxgpt-oci-layers-*")
 	if err != nil {
 		return fmt.Errorf("failed to create temporary directory: %v", err)
 	}

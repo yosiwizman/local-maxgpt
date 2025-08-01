@@ -20,7 +20,7 @@ type TranscriptCMD struct {
 	Language   string `short:"l" help:"Language of the audio file"`
 	Translate  bool   `short:"c" help:"Translate the transcription to english"`
 	Threads    int    `short:"t" default:"1" help:"Number of threads used for parallel computation"`
-	ModelsPath string `env:"LOCALAI_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
+	ModelsPath string `env:"MAXGPT_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
 }
 
 func (t *TranscriptCMD) Run(ctx *cliContext.Context) error {

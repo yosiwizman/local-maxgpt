@@ -22,7 +22,7 @@ type TTSCMD struct {
 	Voice      string `short:"v" help:"Voice name to run the TTS"`
 	Language   string `short:"l" help:"Language to use with the TTS"`
 	OutputFile string `short:"o" type:"path" help:"The path to write the output wav file"`
-	ModelsPath string `env:"LOCALAI_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
+	ModelsPath string `env:"MAXGPT_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
 }
 
 func (t *TTSCMD) Run(ctx *cliContext.Context) error {

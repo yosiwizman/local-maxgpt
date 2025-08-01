@@ -32,7 +32,7 @@ func (s *HuggingFace) PredictHuggingFace(text string, opts ...PredictOption) (*P
 		return nil, err
 	}
 
-	// Convert from LocalAI to LangChainGo format of options
+	// Convert from MaxGPT to LangChainGo format of options
 	co := []llms.CallOption{
 		llms.WithModel(po.Model),
 		llms.WithMaxTokens(po.MaxTokens),

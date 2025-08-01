@@ -377,25 +377,25 @@ func newNodeOpts(token string) ([]node.Option, error) {
 	defaultInterval := 10 * time.Second
 
 	// TODO: move this up, expose more config options when creating a node
-	noDHT := os.Getenv("LOCALAI_P2P_DISABLE_DHT") == "true"
-	noLimits := os.Getenv("LOCALAI_P2P_ENABLE_LIMITS") != "true"
+	noDHT := os.Getenv("MAXGPT_P2P_DISABLE_DHT") == "true"
+	noLimits := os.Getenv("MAXGPT_P2P_ENABLE_LIMITS") != "true"
 
 	var listenMaddrs []string
 	var bootstrapPeers []string
 
-	laddrs := os.Getenv("LOCALAI_P2P_LISTEN_MADDRS")
+	laddrs := os.Getenv("MAXGPT_P2P_LISTEN_MADDRS")
 	if laddrs != "" {
 		listenMaddrs = strings.Split(laddrs, ",")
 	}
 
-	bootmaddr := os.Getenv("LOCALAI_P2P_BOOTSTRAP_PEERS_MADDRS")
+	bootmaddr := os.Getenv("MAXGPT_P2P_BOOTSTRAP_PEERS_MADDRS")
 	if bootmaddr != "" {
 		bootstrapPeers = strings.Split(bootmaddr, ",")
 	}
 
-	dhtAnnounceMaddrs := stringsToMultiAddr(strings.Split(os.Getenv("LOCALAI_P2P_DHT_ANNOUNCE_MADDRS"), ","))
+	dhtAnnounceMaddrs := stringsToMultiAddr(strings.Split(os.Getenv("MAXGPT_P2P_DHT_ANNOUNCE_MADDRS"), ","))
 
-	libp2ploglevel := os.Getenv("LOCALAI_P2P_LIB_LOGLEVEL")
+	libp2ploglevel := os.Getenv("MAXGPT_P2P_LIB_LOGLEVEL")
 	if libp2ploglevel == "" {
 		libp2ploglevel = "fatal"
 	}

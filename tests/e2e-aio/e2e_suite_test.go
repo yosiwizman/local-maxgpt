@@ -30,9 +30,9 @@ const (
 	defaultApiPort = "8080"
 )
 
-func TestLocalAI(t *testing.T) {
+func TestMaxGPT(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "LocalAI E2E test suite")
+	RunSpecs(t, "MaxGPT E2E test suite")
 }
 
 var _ = BeforeSuite(func() {

@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <img width="300" src="./core/http/static/logo.png"> <br>
+  <img width="300" src="./static/maxgpt-logo.svg"> <br>
 <br>
 </h1>
 
@@ -46,9 +46,9 @@
 > [💻 Quickstart](https://localai.io/basics/getting_started/) [🖼️ Models](https://models.localai.io/) [🚀 Roadmap](https://github.com/mudler/LocalAI/issues?q=is%3Aissue+is%3Aopen+label%3Aroadmap) [🥽 Demo](https://demo.localai.io) [🌍 Explorer](https://explorer.localai.io) [🛫 Examples](https://github.com/mudler/LocalAI-examples) Try on 
 [![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](https://t.me/localaiofficial_bot)
 
-[![tests](https://github.com/go-skynet/LocalAI/actions/workflows/test.yml/badge.svg)](https://github.com/go-skynet/LocalAI/actions/workflows/test.yml)[![Build and Release](https://github.com/go-skynet/LocalAI/actions/workflows/release.yaml/badge.svg)](https://github.com/go-skynet/LocalAI/actions/workflows/release.yaml)[![build container images](https://github.com/go-skynet/LocalAI/actions/workflows/image.yml/badge.svg)](https://github.com/go-skynet/LocalAI/actions/workflows/image.yml)[![Bump dependencies](https://github.com/go-skynet/LocalAI/actions/workflows/bump_deps.yaml/badge.svg)](https://github.com/go-skynet/LocalAI/actions/workflows/bump_deps.yaml)[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/localai)](https://artifacthub.io/packages/search?repo=localai)
+[![MaxGPT](https://img.shields.io/badge/MaxGPT-BETA-8b5cf6?style=for-the-badge&logo=data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTIiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzhiNWNmNiIvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMzYjgyZjYiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8dGV4dCB4PSIzMiIgeT0iNDIiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIyOCIgZm9udC13ZWlnaHQ9ImJvbGQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IndoaXRlIj5NPC90ZXh0Pgo8L3N2Zz4K)](https://github.com/yosiwizman/local-maxgpt)
 
-**LocalAI** is the free, Open Source OpenAI alternative. LocalAI act as a drop-in replacement REST API that's compatible with OpenAI (Elevenlabs, Anthropic... ) API specifications for local AI inferencing. It allows you to run LLMs, generate images, audio (and not only) locally or on-prem with consumer grade hardware, supporting multiple model families. Does not require GPU. It is created and maintained by [Ettore Di Giacinto](https://github.com/mudler).
+**MaxGPT** is the free, Open Source OpenAI alternative. MaxGPT acts as a drop-in replacement REST API that's compatible with OpenAI (Elevenlabs, Anthropic... ) API specifications for local AI inferencing. It allows you to run LLMs, generate images, audio (and not only) locally or on-prem with consumer grade hardware, supporting multiple model families. Does not require GPU.
 
 
 ## 📚🆕 Local Stack Family
@@ -105,10 +105,10 @@ Run the installer script:
 
 ```bash
 # Basic installation
-curl https://localai.io/install.sh | sh
+curl https://raw.githubusercontent.com/yosiwizman/local-maxgpt/master/install.sh | sh
 ```
 
-For more installation options, see [Installer Options](https://localai.io/docs/advanced/installer/).
+For more installation options, see the documentation in this repository.
 
 Or run with docker:
 
@@ -177,10 +177,10 @@ For more information about the AIO images and pre-downloaded models, see [Contai
 To load models:
 
 ```bash
-# From the model gallery (see available models with `local-ai models list`, in the WebUI from the model tab, or visiting https://models.localai.io)
-local-ai run llama-3.2-1b-instruct:q4_k_m
-# Start LocalAI with the phi-2 model directly from huggingface
-local-ai run huggingface://TheBloke/phi-2-GGUF/phi-2.Q8_0.gguf
+# From the model gallery (see available models with `maxgpt models list` or in the WebUI from the model tab)
+maxgpt run llama-3.2-1b-instruct:q4_k_m
+# Start MaxGPT with the phi-2 model directly from huggingface
+maxgpt run huggingface://TheBloke/phi-2-GGUF/phi-2.Q8_0.gguf
 # Install and run a model from the Ollama OCI registry
 local-ai run ollama://gemma:2b
 # Run a model from a configuration file

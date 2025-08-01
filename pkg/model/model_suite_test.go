@@ -9,5 +9,5 @@ import (
 
 func TestModel(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "LocalAI model test")
+	RunSpecs(t, "MaxGPT model test")
 }

@@ -1,0 +1,132 @@
+:root {
+  --primary-gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+  --primary-color: #8b5cf6;
+  --secondary-color: #3b82f6;
+  --bg-dark: #0f0f23;
+  --text-light: #e2e8f0;
+  --beta-bg: rgba(167, 139, 250, 0.1);
+  --beta-color: #a78bfa;
+}
+
+body {
+  background-color: var(--bg-dark) !important;
+  color: var(--text-light) !important;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3a 100%) !important;
+  min-height: 100vh;
+}
+
+.navbar, .header, nav {
+  background: var(--primary-gradient) !important;
+  border: none !important;
+}
+
+.btn-primary, .btn-blue-600, .bg-blue-600 {
+  background: var(--primary-gradient) !important;
+  border: none !important;
+  color: white !important;
+}
+
+.btn-primary:hover, .btn-blue-600:hover, .bg-blue-600:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.beta-tag {
+  background: var(--beta-bg);
+  color: var(--beta-color);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+.card, .bg-white, .bg-gray-50 {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+  backdrop-filter: blur(10px);
+}
+
+.text-gray-900, .text-black {
+  color: var(--text-light) !important;
+}
+
+.bg-gradient-to-r {
+  background: var(--primary-gradient) !important;
+}
+
+.footer {
+  background: rgba(15, 15, 35, 0.9) !important;
+  border-top: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+.maxgpt-logo {
+  filter: drop-shadow(0 2px 4px rgba(139, 92, 246, 0.3));
+}
+
+h1, h2, h3, h4, h5, h6 {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-section {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(59, 130, 246, 0.1) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+input, textarea, select {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  color: var(--text-light) !important;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2) !important;
+}
+
+.alert-warning {
+  background: rgba(251, 191, 36, 0.1) !important;
+  border: 1px solid rgba(251, 191, 36, 0.3) !important;
+  color: #fbbf24 !important;
+}
+
+.alert-info {
+  background: rgba(59, 130, 246, 0.1) !important;
+  border: 1px solid rgba(59, 130, 246, 0.3) !important;
+  color: #3b82f6 !important;
+}
+
+.loading-spinner {
+  border-color: var(--primary-color);
+  border-top-color: transparent;
+}
+
+.bg-gray-800, .bg-gray-900 {
+  background: rgba(15, 15, 35, 0.8) !important;
+  border: 1px solid rgba(139, 92, 246, 0.1) !important;
+}
+
+.text-blue-400 {
+  color: var(--primary-color) !important;
+}
+
+.border-blue-600, .border-blue-700 {
+  border-color: var(--primary-color) !important;
+}
+
+.hover\:bg-blue-700:hover, .hover\:bg-blue-800:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #2563eb 100%) !important;
+}

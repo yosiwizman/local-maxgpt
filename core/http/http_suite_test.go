@@ -7,7 +7,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-func TestLocalAI(t *testing.T) {
+func TestMaxGPT(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "LocalAI test suite")
+	RunSpecs(t, "MaxGPT test suite")
 }

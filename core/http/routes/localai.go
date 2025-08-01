@@ -21,7 +21,7 @@ func RegisterLocalAIRoutes(router *fiber.App,
 
 	router.Get("/swagger/*", swagger.HandlerDefault) // default
 
-	// LocalAI API endpoints
+	// MaxGPT API endpoints
 	if !appConfig.DisableGalleryEndpoint {
 		modelGalleryEndpointService := localai.CreateModelGalleryEndpointService(appConfig.Galleries, appConfig.BackendGalleries, appConfig.ModelPath, galleryService)
 		router.Post("/models/apply", modelGalleryEndpointService.ApplyModelGalleryEndpoint())

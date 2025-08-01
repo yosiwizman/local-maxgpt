@@ -9,20 +9,19 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
-// LocalAIMetricsEndpoint returns the metrics endpoint for LocalAI
 // @Summary Prometheus metrics endpoint
 // @Param request body config.Gallery true "Gallery details"
 // @Router /metrics [get]
-func LocalAIMetricsEndpoint() fiber.Handler {
+func MaxGPTMetricsEndpoint() fiber.Handler {
 	return adaptor.HTTPHandler(promhttp.Handler())
 }
 
 type apiMiddlewareConfig struct {
 	Filter         func(c *fiber.Ctx) bool
-	metricsService *services.LocalAIMetricsService
+	metricsService *services.MaxGPTMetricsService
 }
 
-func LocalAIMetricsAPIMiddleware(metrics *services.LocalAIMetricsService) fiber.Handler {
+func MaxGPTMetricsAPIMiddleware(metrics *services.MaxGPTMetricsService) fiber.Handler {
 	cfg := apiMiddlewareConfig{
 		metricsService: metrics,
 		Filter: func(c *fiber.Ctx) bool {

@@ -36,14 +36,14 @@ import (
 //go:embed static/*
 var embedDirStatic embed.FS
 
-// @title LocalAI API
+// @title MaxGPT API
 // @version 2.0.0
-// @description The LocalAI Rest API.
+// @description The MaxGPT Rest API.
 // @termsOfService
-// @contact.name LocalAI
-// @contact.url https://localai.io
+// @contact.name MaxGPT
+// @contact.url https://github.com/yosiwizman/local-maxgpt
 // @license.name MIT
-// @license.url https://raw.githubusercontent.com/mudler/LocalAI/master/LICENSE
+// @license.url https://raw.githubusercontent.com/yosiwizman/local-maxgpt/master/LICENSE
 // @BasePath /
 // @securityDefinitions.apikey BearerAuth
 // @in header
@@ -112,7 +112,7 @@ func API(application *application.Application) (*fiber.App, error) {
 		if listenData.TLS {
 			scheme = "https"
 		}
-		log.Info().Str("endpoint", scheme+"://"+listenData.Host+":"+listenData.Port).Msg("LocalAI API is listening! Please connect to the endpoint for API documentation.")
+		log.Info().Str("endpoint", scheme+"://"+listenData.Host+":"+listenData.Port).Msg("MaxGPT API is listening! Please connect to the endpoint for API documentation.")
 		return nil
 	})
 
@@ -129,13 +129,13 @@ func API(application *application.Application) (*fiber.App, error) {
 	}
 
 	if !application.ApplicationConfig().DisableMetrics {
-		metricsService, err := services.NewLocalAIMetricsService()
+		metricsService, err := services.NewMaxGPTMetricsService()
 		if err != nil {
 			return nil, err
 		}
 
 		if metricsService != nil {
-			router.Use(localai.LocalAIMetricsAPIMiddleware(metricsService))
+			router.Use(localai.MaxGPTMetricsAPIMiddleware(metricsService))
 			router.Hooks().OnShutdown(func() error {
 				return metricsService.Shutdown()
 			})
@@ -206,7 +206,7 @@ func API(application *application.Application) (*fiber.App, error) {
 	requestExtractor := middleware.NewRequestExtractor(application.BackendLoader(), application.ModelLoader(), application.ApplicationConfig())
 
 	routes.RegisterElevenLabsRoutes(router, requestExtractor, application.BackendLoader(), application.ModelLoader(), application.ApplicationConfig())
-	routes.RegisterLocalAIRoutes(router, requestExtractor, application.BackendLoader(), application.ModelLoader(), application.ApplicationConfig(), galleryService)
+	routes.RegisterMaxGPTRoutes(router, requestExtractor, application.BackendLoader(), application.ModelLoader(), application.ApplicationConfig(), galleryService)
 	routes.RegisterOpenAIRoutes(router, requestExtractor, application)
 	if !application.ApplicationConfig().DisableWebUI {
 		routes.RegisterUIRoutes(router, application.BackendLoader(), application.ModelLoader(), application.ApplicationConfig(), galleryService)

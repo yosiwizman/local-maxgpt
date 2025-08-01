@@ -9,8 +9,8 @@ import (
 )
 
 func guessDefaultsFromFile(cfg *BackendConfig, modelPath string, defaultCtx int) {
-	if os.Getenv("LOCALAI_DISABLE_GUESSING") == "true" {
-		log.Debug().Msgf("guessDefaultsFromFile: %s", "guessing disabled with LOCALAI_DISABLE_GUESSING")
+	if os.Getenv("MAXGPT_DISABLE_GUESSING") == "true" {
+		log.Debug().Msgf("guessDefaultsFromFile: %s", "guessing disabled with MAXGPT_DISABLE_GUESSING")
 		return
 	}
 

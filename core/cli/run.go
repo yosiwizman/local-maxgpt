@@ -127,7 +127,7 @@ func (r *RunCMD) Run(ctx *cliContext.Context) error {
 			fmt.Println(token)
 
 			log.Info().Msg("To use the token, you can run the following command in another node or terminal:")
-			fmt.Printf("export TOKEN=\"%s\"\nlocal-ai worker p2p-llama-cpp-rpc\n", token)
+			fmt.Printf("export TOKEN=\"%s\"\nmaxgpt worker p2p-llama-cpp-rpc\n", token)
 		}
 		opts = append(opts, config.WithP2PToken(token))
 	}

@@ -30,7 +30,7 @@ func WelcomeEndpoint(appConfig *config.ApplicationConfig,
 		processingModels, taskTypes := opcache.GetStatus()
 
 		summary := fiber.Map{
-			"Title":             "LocalAI API - " + internal.PrintableVersion(),
+			"Title":             "MaxGPT API - " + internal.PrintableVersion(),
 			"Version":           internal.PrintableVersion(),
 			"BaseURL":           utils.BaseURL(c),
 			"Models":            modelsWithoutConfig,

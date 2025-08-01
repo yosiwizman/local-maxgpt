@@ -10,12 +10,12 @@ const docTemplate = `{
         "description": "{{escape .Description}}",
         "title": "{{.Title}}",
         "contact": {
-            "name": "LocalAI",
-            "url": "https://localai.io"
+            "name": "MaxGPT",
+            "url": "https://github.com/yosiwizman/local-maxgpt"
         },
         "license": {
             "name": "MIT",
-            "url": "https://raw.githubusercontent.com/mudler/LocalAI/master/LICENSE"
+            "url": "https://raw.githubusercontent.com/yosiwizman/local-maxgpt/master/LICENSE"
         },
         "version": "{{.Version}}"
     },
@@ -111,7 +111,7 @@ const docTemplate = `{
         },
         "/models/apply": {
             "post": {
-                "summary": "Install models to LocalAI.",
+                "summary": "Install models to MaxGPT.",
                 "parameters": [
                     {
                         "description": "query params",
@@ -151,7 +151,7 @@ const docTemplate = `{
         },
         "/models/delete/{name}": {
             "post": {
-                "summary": "delete models to LocalAI.",
+                "summary": "delete models to MaxGPT.",
                 "parameters": [
                     {
                         "type": "string",
@@ -187,7 +187,7 @@ const docTemplate = `{
                 }
             },
             "post": {
-                "summary": "Adds a gallery in LocalAI",
+                "summary": "Adds a gallery in MaxGPT",
                 "parameters": [
                     {
                         "description": "Gallery details",
@@ -212,7 +212,7 @@ const docTemplate = `{
                 }
             },
             "delete": {
-                "summary": "removes a gallery from LocalAI",
+                "summary": "removes a gallery from MaxGPT",
                 "parameters": [
                     {
                         "description": "Gallery details",
@@ -268,7 +268,7 @@ const docTemplate = `{
         },
         "/system": {
             "get": {
-                "summary": "Show the LocalAI instance information",
+                "summary": "Show the MaxGPT instance information",
                 "responses": {
                     "200": {
                         "description": "Response",
@@ -1018,7 +1018,7 @@ const docTemplate = `{
                 }
             }
         },
-        "localai.GalleryModel": {
+        "maxgpt.GalleryModel": {
             "type": "object",
             "properties": {
                 "config_file": {
@@ -1940,8 +1940,8 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "",
 	BasePath:         "/",
 	Schemes:          []string{},
-	Title:            "LocalAI API",
-	Description:      "The LocalAI Rest API.",
+	Title:            "MaxGPT API",
+	Description:      "The MaxGPT Rest API.",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,
 	LeftDelim:        "{{",

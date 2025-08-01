@@ -56,8 +56,8 @@ func (mgs *BackendEndpointService) GetAllStatusEndpoint() func(c *fiber.Ctx) err
 	}
 }
 
-// ApplyBackendEndpoint installs a new backend to a LocalAI instance
-// @Summary Install backends to LocalAI.
+// ApplyBackendEndpoint installs a new backend to a MaxGPT instance
+// @Summary Install backends to MaxGPT.
 // @Param request body BackendModel true "query params"
 // @Success 200 {object} schema.BackendResponse "Response"
 // @Router /backends/apply [post]
@@ -83,8 +83,8 @@ func (mgs *BackendEndpointService) ApplyBackendEndpoint() func(c *fiber.Ctx) err
 	}
 }
 
-// DeleteBackendEndpoint lets delete backends from a LocalAI instance
-// @Summary delete backends from LocalAI.
+// DeleteBackendEndpoint lets delete backends from a MaxGPT instance
+// @Summary delete backends from MaxGPT.
 // @Param name	path string	true	"Backend name"
 // @Success 200 {object} schema.BackendResponse "Response"
 // @Router /backends/delete/{name} [post]
@@ -107,7 +107,7 @@ func (mgs *BackendEndpointService) DeleteBackendEndpoint() func(c *fiber.Ctx) er
 	}
 }
 
-// ListBackendsEndpoint list the available backends configured in LocalAI
+// ListBackendsEndpoint list the available backends configured in MaxGPT
 // @Summary List all Backends
 // @Success 200 {object} []gallery.GalleryBackend "Response"
 // @Router /backends [get]
@@ -121,7 +121,7 @@ func (mgs *BackendEndpointService) ListBackendsEndpoint() func(c *fiber.Ctx) err
 	}
 }
 
-// ListModelGalleriesEndpoint list the available galleries configured in LocalAI
+// ListModelGalleriesEndpoint list the available galleries configured in MaxGPT
 // @Summary List all Galleries
 // @Success 200 {object} []config.Gallery "Response"
 // @Router /backends/galleries [get]
@@ -137,7 +137,7 @@ func (mgs *BackendEndpointService) ListBackendGalleriesEndpoint() func(c *fiber.
 	}
 }
 
-// ListAvailableBackendsEndpoint list the available backends in the galleries configured in LocalAI
+// ListAvailableBackendsEndpoint list the available backends in the galleries configured in MaxGPT
 // @Summary List all available Backends
 // @Success 200 {object} []gallery.GalleryBackend "Response"
 // @Router /backends/available [get]

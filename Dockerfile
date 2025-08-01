@@ -264,20 +264,28 @@ WORKDIR /build
 
 COPY . .
 
-# Add MaxGPT branding files and HTML template overrides before building
-COPY ./static/maxgpt-theme.css ./core/http/static/
-COPY ./static/maxgpt-logo.svg ./core/http/static/
-COPY ./templates/head-override.html ./core/http/views/partials/head.html
-COPY ./templates/navbar-override.html ./core/http/views/partials/navbar.html  
-COPY ./templates/footer-override.html ./core/http/views/partials/footer.html
-COPY ./templates/index-override.html ./core/http/views/index.html
+# Add MaxGPT branding files before building
+COPY ./static/maxgpt-complete-theme.css ./core/http/static/
+COPY ./static/maxgpt-favicon.svg ./core/http/static/favicon.svg
+COPY ./static/maxgpt-logo-horizontal.svg ./core/http/static/logo_horizontal.png
+COPY ./static/maxgpt-logo.svg ./core/http/static/logo.png
 
-# Replace LocalAI text with Local MaxGPT in source files before building
-RUN find ./core/http/views -name "*.html" -type f -exec sed -i 's/LocalAI/Local MaxGPT/g' {} \;
-RUN find ./core/http/static -name "*.js" -type f -exec sed -i 's/LocalAI/Local MaxGPT/g' {} \;
+# Apply comprehensive MaxGPT rebranding in source files before building
+RUN find ./core/http/views -name "*.html" -type f -exec sed -i 's/LocalAI/MaxGPT/g' {} \;
+RUN find ./core/http/static -name "*.js" -type f -exec sed -i 's/LocalAI/MaxGPT/g' {} \;
+RUN find ./core/http/static -name "*.css" -type f -exec sed -i 's/LocalAI/MaxGPT/g' {} \;
+RUN find . -name "*.go" -type f -exec sed -i 's/"LocalAI"/"MaxGPT"/g' {} \;
+RUN find . -name "*.go" -type f -exec sed -i 's/LocalAI API/MaxGPT API/g' {} \;
+RUN find . -name "*.go" -type f -exec sed -i 's/localai/maxgpt/g' {} \;
+RUN find . -name "*.go" -type f -exec sed -i 's/local-ai/maxgpt/g' {} \;
 
-# Remove footer references to Ettore Di Giacinto in source files
+# Remove creator references in source files
 RUN find ./core/http/views -name "*.html" -type f -exec sed -i '/Ettore Di Giacinto/d' {} \;
+RUN find ./core/http/views -name "*.html" -type f -exec sed -i '/mudler\.pm/d' {} \;
+RUN find . -name "*.go" -type f -exec sed -i '/Ettore Di Giacinto/d' {} \;
+
+# Update binary name and CLI references
+RUN find . -name "*.go" -type f -exec sed -i 's/local-ai/maxgpt/g' {} \;
 
 ## Build the binary
 ## If we're on arm64 AND using cublas/hipblas, skip some of the llama-compat backends to save space

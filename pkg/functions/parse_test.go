@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("LocalAI function parse tests", func() {
+var _ = Describe("MaxGPT function parse tests", func() {
 	var functionConfig FunctionsConfig
 
 	BeforeEach(func() {

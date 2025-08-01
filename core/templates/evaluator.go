@@ -12,7 +12,7 @@ import (
 )
 
 // Rather than pass an interface{} to the prompt template:
-// These are the definitions of all possible variables LocalAI will currently populate for use in a prompt template file
+// These are the definitions of all possible variables MaxGPT will currently populate for use in a prompt template file
 // Please note: Not all of these are populated on every endpoint - your template should either be tested for each endpoint you map it to, or tolerant of zero values.
 type PromptTemplateData struct {
 	SystemPrompt         string
