@@ -1,0 +1,115 @@
+/* THEME VARIABLES */
+:root {
+  /* Light Mode */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f3f4f6;
+  --bg-dark: #1f2937;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-light: #ffffff;
+  --border-color: #e5e7eb;
+  --gradient: linear-gradient(135deg, #8b5cf6 0%, #3b82f6 100%);
+}
+
+[data-theme="dark"] {
+  /* Dark Mode */
+  --bg-primary: #0f0f23;
+  --bg-secondary: #1a1a2e;
+  --bg-dark: #16213e;
+  --text-primary: #e2e8f0;
+  --text-secondary: #a0aec0;
+  --text-light: #ffffff;
+  --border-color: #374151;
+}
+
+/* GLOBAL STYLES */
+body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  transition: all 0.3s ease;
+}
+
+/* FIX MAIN TITLE */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-primary) !important;
+  font-weight: 700 !important;
+}
+
+/* NAVIGATION ICONS */
+.navbar a, nav a, .nav-link {
+  color: var(--text-light) !important;
+  opacity: 0.9;
+}
+
+.navbar a:hover, nav a:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+/* GRADIENT HEADER */
+.navbar, header, nav {
+  background: var(--gradient) !important;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+}
+
+/* BUTTONS */
+.btn, button {
+  background: var(--gradient) !important;
+  color: white !important;
+  border: none !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn:hover, button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+}
+
+/* CARDS */
+.card, .panel, .box {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+/* BETA TAG */
+.beta-tag {
+  background: rgba(139, 92, 246, 0.2);
+  color: #8b5cf6;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-left: 10px;
+}
+
+/* FIX ALL TEXT */
+p, span, div, li, a {
+  color: var(--text-primary) !important;
+}
+
+/* Special for gradient backgrounds */
+.gradient-bg * {
+  color: white !important;
+}
+
+/* THEME TOGGLE BUTTON STYLES */
+.theme-toggle-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2) !important;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  cursor: pointer;
+  z-index: 1000;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
