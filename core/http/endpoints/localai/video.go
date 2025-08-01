@@ -66,7 +66,7 @@ func downloadFile(url string) (string, error) {
 // @Router /video [post]
 func VideoEndpoint(cl *config.BackendConfigLoader, ml *model.ModelLoader, appConfig *config.ApplicationConfig) func(c *fiber.Ctx) error {
 	return func(c *fiber.Ctx) error {
-		input, ok := c.Locals(middleware.CONTEXT_LOCALS_KEY_MAXGPT_REQUEST).(*schema.VideoRequest)
+		input, ok := c.Locals(middleware.CONTEXT_LOCALS_KEY_LOCALAI_REQUEST).(*schema.VideoRequest)
 		if !ok || input.Model == "" {
 			log.Error().Msg("Video Endpoint - Invalid Input")
 			return fiber.ErrBadRequest
