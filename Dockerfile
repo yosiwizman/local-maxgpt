@@ -264,6 +264,21 @@ WORKDIR /build
 
 COPY . .
 
+# Add MaxGPT branding files and HTML template overrides before building
+COPY ./static/maxgpt-theme.css ./core/http/static/
+COPY ./static/maxgpt-logo.svg ./core/http/static/
+COPY ./templates/head-override.html ./core/http/views/partials/head.html
+COPY ./templates/navbar-override.html ./core/http/views/partials/navbar.html  
+COPY ./templates/footer-override.html ./core/http/views/partials/footer.html
+COPY ./templates/index-override.html ./core/http/views/index.html
+
+# Replace LocalAI text with Local MaxGPT in source files before building
+RUN find ./core/http/views -name "*.html" -type f -exec sed -i 's/LocalAI/Local MaxGPT/g' {} \;
+RUN find ./core/http/static -name "*.js" -type f -exec sed -i 's/LocalAI/Local MaxGPT/g' {} \;
+
+# Remove footer references to Ettore Di Giacinto in source files
+RUN find ./core/http/views -name "*.html" -type f -exec sed -i '/Ettore Di Giacinto/d' {} \;
+
 ## Build the binary
 ## If we're on arm64 AND using cublas/hipblas, skip some of the llama-compat backends to save space
 ## Otherwise just run the normal build
@@ -308,6 +323,9 @@ COPY ./entrypoint.sh .
 
 # Copy the binary
 COPY --from=builder /build/local-ai ./
+
+# Install sed for text replacement and add MaxGPT branding
+RUN apt-get update && apt-get install -y sed && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Make sure the models directory exists
 RUN mkdir -p /models /backends
