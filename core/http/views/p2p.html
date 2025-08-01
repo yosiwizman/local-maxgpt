@@ -20,7 +20,7 @@
                     </h1>
                     <p class="text-xl text-gray-300">
                         Distribute computation by sharing and loadbalancing instances or sharding model weights
-                        <a href="https://localai.io/features/distribute/" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">
+                        <a href="https://maxgpt.ai/features/distribute/" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">
                             <i class="fas fa-circle-info ml-2"></i>
                         </a>
                     </p>
@@ -57,7 +57,7 @@
                 </div>
                 <p class="mb-4 text-red-200">
                     You have to enable P2P mode by starting LocalAI with <code class="bg-red-900/50 px-2 py-0.5 rounded">--p2p</code>. Please restart the server with <code class="bg-red-900/50 px-2 py-0.5 rounded">--p2p</code> to generate a new token automatically that can be used to discover other nodes. If you already have a token, specify it with <code class="bg-red-900/50 px-2 py-0.5 rounded">export TOKEN=".."</code>
-                    <a href="https://localai.io/features/distribute/" target="_blank" class="text-red-300 hover:text-red-200 underline underline-offset-2">
+                    <a href="https://maxgpt.ai/features/distribute/" target="_blank" class="text-red-300 hover:text-red-200 underline underline-offset-2">
                        Check out the documentation for more information.
                     </a>
                 </p>
@@ -134,7 +134,7 @@ local-ai federated</code>
 
                                 <p class="text-gray-400 text-sm mt-2">Note: Token is needed when starting the federated server.</p>
 
-                                <p class="text-gray-300 mt-4">For all the options available, please refer to the <a href="https://localai.io/features/distribute/#starting-workers" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">documentation</a>.</p>
+                                <p class="text-gray-300 mt-4">For all the options available, please refer to the <a href="https://maxgpt.ai/features/distribute/#starting-workers" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">documentation</a>.</p>
                             </div>
                         </div>
                         <div class="tabcontent hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block p-4" id="tabs-federated-docker" role="tabpanel" aria-labelledby="tabs-federated-docker">
@@ -161,7 +161,7 @@ docker run -ti --net host -e TOKEN="<span class="token">{{.P2PToken}}</span>" --
                                 <code class="block bg-gray-800 text-yellow-300 p-4 rounded-lg break-words mb-4 border border-gray-700/50">
 docker run -ti --net host -e TOKEN="<span class="token">{{.P2PToken}}</span>" --name local-ai -p 9090:8080 localai/localai:latest-cpu federated</code>
 
-                                <p class="text-gray-300 mt-4">For all the options available and see what image to use, please refer to the <a href="https://localai.io/basics/container/" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">Container images documentation</a> and <a href="https://localai.io/advanced/#cli-parameters" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">CLI parameters documentation</a>.</p>
+                                <p class="text-gray-300 mt-4">For all the options available and see what image to use, please refer to the <a href="https://maxgpt.ai/basics/container/" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">Container images documentation</a> and <a href="https://maxgpt.ai/advanced/#cli-parameters" target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">CLI parameters documentation</a>.</p>
                             </div>
                         </div>
                     </div>
@@ -221,7 +221,7 @@ docker run -ti --net host -e TOKEN="<span class="token">{{.P2PToken}}</span>" --
 export TOKEN="<span class="token">{{.P2PToken}}</span>"<br>
 local-ai worker p2p-llama-cpp-rpc</code>
 
-                                <p class="text-gray-300 mt-4">For all the options available, please refer to the <a href="https://localai.io/features/distribute/#starting-workers" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">documentation</a>.</p>
+                                <p class="text-gray-300 mt-4">For all the options available, please refer to the <a href="https://maxgpt.ai/features/distribute/#starting-workers" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">documentation</a>.</p>
                             </div>
                         </div>
                         <div class="tabcontent hidden opacity-0 transition-opacity duration-150 ease-linear data-[twe-tab-active]:block p-4" id="tabs-docker" role="tabpanel" aria-labelledby="tabs-docker">
@@ -237,7 +237,7 @@ local-ai worker p2p-llama-cpp-rpc</code>
                                 <code class="block bg-gray-800 text-yellow-300 p-4 rounded-lg break-words mb-4 border border-gray-700/50">
 docker run -ti --net host -e TOKEN="<span class="token">{{.P2PToken}}</span>" --name local-ai -p 8080:8080 localai/localai:latest-cpu worker p2p-llama-cpp-rpc</code>
 
-                                <p class="text-gray-300 mt-4">For all the options available and see what image to use, please refer to the <a href="https://localai.io/basics/container/" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">Container images documentation</a> and <a href="https://localai.io/advanced/#cli-parameters" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">CLI parameters documentation</a>.</p>
+                                <p class="text-gray-300 mt-4">For all the options available and see what image to use, please refer to the <a href="https://maxgpt.ai/basics/container/" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">Container images documentation</a> and <a href="https://maxgpt.ai/advanced/#cli-parameters" target="_blank" class="text-indigo-400 hover:text-indigo-300 transition-colors">CLI parameters documentation</a>.</p>
                             </div>
                         </div>
                     </div>
