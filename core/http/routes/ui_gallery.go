@@ -32,7 +32,7 @@ func registerGalleryRoutes(app *fiber.App, cl *config.BackendConfigLoader, appCo
 		if err != nil {
 			log.Error().Err(err).Msg("could not list models from galleries")
 			return c.Status(fiber.StatusInternalServerError).Render("views/error", fiber.Map{
-				"Title":        "LocalAI - Models",
+				"Title":        "MaxGPT - Models",
 				"BaseURL":      utils.BaseURL(c),
 				"Version":      internal.PrintableVersion(),
 				"ErrorCode":    "500",
@@ -61,7 +61,7 @@ func registerGalleryRoutes(app *fiber.App, cl *config.BackendConfigLoader, appCo
 		processingModelsData, taskTypes := opcache.GetStatus()
 
 		summary := fiber.Map{
-			"Title":            "LocalAI - Models",
+			"Title":            "MaxGPT - Models",
 			"BaseURL":          utils.BaseURL(c),
 			"Version":          internal.PrintableVersion(),
 			"Models":           template.HTML(elements.ListModels(models, opcache, galleryService)),

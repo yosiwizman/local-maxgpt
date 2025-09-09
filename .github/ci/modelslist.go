@@ -16,7 +16,7 @@ var modelPageTemplate string = `
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalAI models</title>
+    <title>MaxGPT models</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
 
@@ -76,8 +76,8 @@ var modelPageTemplate string = `
     <div class="container mx-auto px-4 py-4">
         <div class="flex items-center justify-between">
             <div class="flex items-center">
-                <a href="/" class="text-white text-xl font-bold"><img src="https://github.com/mudler/LocalAI/assets/2420543/0966aa2a-166e-4f99-a3e5-6c915fc997dd" alt="LocalAI Logo" class="h-10 mr-3 border-2 border-gray-300 shadow rounded"></a>
-                <a href="/" class="text-white text-xl font-bold">LocalAI</a>
+                <a href="/" class="text-white text-xl font-bold"><img src="https://github.com/mudler/LocalAI/assets/2420543/0966aa2a-166e-4f99-a3e5-6c915fc997dd" alt="MaxGPT Logo" class="h-10 mr-3 border-2 border-gray-300 shadow rounded"></a>
+                <a href="/" class="text-white text-xl font-bold">MaxGPT</a>
             </div>
             <!-- Menu button for small screens -->
             <div class="lg:hidden">
@@ -111,7 +111,7 @@ var modelPageTemplate string = `
 
 <div class="models mt-12">
 	<h2 class="text-center text-3xl font-semibold text-gray-100">
-	LocalAI model gallery list </h2><br>
+	MaxGPT model gallery list </h2><br>
 
 	<h2 class="text-center text-3xl font-semibold text-gray-100">
 
@@ -120,9 +120,9 @@ var modelPageTemplate string = `
 		</a></h2>
 
 	<h3>
-	Refer to the Model gallery <a href="https://localai.io/models/" target="_blank" ><i class="fas fa-circle-info pr-2"></i></a> for more information on how to use the models with LocalAI.<br>
+	Refer to the Model gallery <a href="https://localai.io/models/" target="_blank" ><i class="fas fa-circle-info pr-2"></i></a> for more information on how to use the models with MaxGPT.<br>
 
-	You can install models with the CLI command <code>local-ai models install <model-name></code>. or by using the WebUI.
+	You can install models with the CLI command <code>maxgpt models install <model-name></code>. or by using the WebUI.
 	</h3>
 
 	<input class="form-control appearance-none block w-full mt-5 px-3 py-2 text-base font-normal text-gray-300 pb-2 mb-5 bg-gray-800 bg-clip-padding border border-solid border-gray-600 rounded transition ease-in-out m-0 focus:text-gray-300 focus:bg-gray-900 focus:border-blue-500 focus:outline-none" type="search"
@@ -182,7 +182,7 @@ var modelPageTemplate string = `
 
                     <p class="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                     To install the model with the CLI, run: <br>
-                    <code> local-ai models install {{$model.Name}} </code> <br>
+                    <code> maxgpt models install {{$model.Name}} </code> <br>
 
                     <hr>
                     See also <a href="https://localai.io/models/" target="_blank" >

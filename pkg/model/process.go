@@ -16,7 +16,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-var forceBackendShutdown bool = os.Getenv("LOCALAI_FORCE_BACKEND_SHUTDOWN") == "true"
+var forceBackendShutdown bool = os.Getenv("MAXGPT_FORCE_BACKEND_SHUTDOWN") == "true"
 
 func (ml *ModelLoader) deleteProcess(s string) error {
 	model, ok := ml.models[s]

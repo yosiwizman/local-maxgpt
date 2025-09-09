@@ -1,7 +1,7 @@
 package schema
 
-// This file and type represent a generic request to LocalAI - as opposed to requests to LocalAI-specific endpoints, which live in localai.go
-type LocalAIRequest interface {
+// This file and type represent a generic request to MaxGPT - as opposed to requests to MaxGPT-specific endpoints, which live in localai.go
+type MaxGPTRequest interface {
 	ModelName(*string) string
 }
 

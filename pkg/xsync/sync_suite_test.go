@@ -9,5 +9,5 @@ import (
 
 func TestSync(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "LocalAI sync test")
+	RunSpecs(t, "MaxGPT sync test")
 }

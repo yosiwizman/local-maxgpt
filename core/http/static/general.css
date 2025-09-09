@@ -79,3 +79,40 @@ li {
 li:last-child {
     margin-bottom: 0; /* Removes bottom margin from the last item */
 }
+
+/* MaxGPT Theme - Text Visibility Fixes */
+.welcome-text, h1, h2, h3, p {
+  color: #1a1a2e !important;  /* Dark text for visibility */
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+/* Make the main welcome title stand out */
+h1 {
+  font-weight: 900;
+  font-size: 3rem;
+}
+
+/* Additional fixes for purple gradient backgrounds */
+.bg-gradient-to-r.from-purple-900\/30 h1,
+.bg-gradient-to-r.from-purple-900\/30 h2,
+.bg-gradient-to-r.from-purple-900\/30 h3,
+.bg-gradient-to-r.from-purple-900\/30 p {
+  color: #1a1a2e !important;
+  text-shadow: 0 0 20px rgba(255,255,255,0.5);
+}
+
+/* Comprehensive text color fixes for all text elements */
+.text-gray-300, .text-gray-400, .text-gray-500,
+.text-white, .text-blue-100, .text-purple-100 {
+  color: #1a1a2e !important;
+}
+
+/* Fix button text */
+button, .btn {
+  color: white !important;
+}
+
+/* Fix model gallery text */
+.model-card h3, .model-card p {
+  color: #1a1a2e !important;
+}

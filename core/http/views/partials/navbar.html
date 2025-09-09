@@ -4,10 +4,15 @@
             <div class="flex items-center">
                 <!-- Logo Image -->
                 <a href="./" class="flex items-center group">
-                    <img src="static/logo_horizontal.png" 
-                         alt="LocalAI Logo" 
-                         class="h-14 mr-3 brightness-110 transition-all duration-300 group-hover:brightness-125">
+                    <img src="static/maxgpt-logo.svg" 
+                         alt="MaxGPT Logo" 
+                         class="h-14 mr-3 maxgpt-logo brightness-110 transition-all duration-300 group-hover:brightness-125">
                 </a>
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" class="theme-toggle-btn" onclick="toggleTheme()">
+                  <span class="light-icon">🌞</span>
+                  <span class="dark-icon" style="display:none;">🌙</span>
+                </button>
             </div>
             
             <!-- Menu button for small screens -->
@@ -85,6 +90,28 @@
 </nav>
 
 <script>
+    // Theme toggle functionality
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Toggle icons
+      document.querySelector('.light-icon').style.display = newTheme === 'dark' ? 'none' : 'block';
+      document.querySelector('.dark-icon').style.display = newTheme === 'dark' ? 'block' : 'none';
+    }
+
+    // Load saved theme
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      document.querySelector('.light-icon').style.display = savedTheme === 'dark' ? 'none' : 'block';
+      document.querySelector('.dark-icon').style.display = savedTheme === 'dark' ? 'block' : 'none';
+    });
+
     // JavaScript to toggle the mobile menu with animation
     document.getElementById('menu-toggle').addEventListener('click', function () {
         var mobileMenu = document.getElementById('mobile-menu');

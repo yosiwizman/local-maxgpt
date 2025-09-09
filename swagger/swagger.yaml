@@ -121,7 +121,7 @@ definitions:
       progress:
         type: number
     type: object
-  localai.GalleryModel:
+  maxgpt.GalleryModel:
     properties:
       config_file:
         additionalProperties: true
@@ -811,7 +811,7 @@ paths:
         name: request
         required: true
         schema:
-          $ref: '#/definitions/localai.GalleryModel'
+          $ref: '#/definitions/maxgpt.GalleryModel'
       responses:
         "200":
           description: Response

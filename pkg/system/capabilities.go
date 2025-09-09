@@ -35,18 +35,18 @@ func (s *SystemState) Capability(capMap map[string]string) string {
 }
 
 func (s *SystemState) getSystemCapabilities() string {
-	if os.Getenv("LOCALAI_FORCE_META_BACKEND_CAPABILITY") != "" {
-		log.Debug().Str("LOCALAI_FORCE_META_BACKEND_CAPABILITY", os.Getenv("LOCALAI_FORCE_META_BACKEND_CAPABILITY")).Msg("Using forced capability")
-		return os.Getenv("LOCALAI_FORCE_META_BACKEND_CAPABILITY")
+	if os.Getenv("MAXGPT_FORCE_META_BACKEND_CAPABILITY") != "" {
+		log.Debug().Str("MAXGPT_FORCE_META_BACKEND_CAPABILITY", os.Getenv("MAXGPT_FORCE_META_BACKEND_CAPABILITY")).Msg("Using forced capability")
+		return os.Getenv("MAXGPT_FORCE_META_BACKEND_CAPABILITY")
 	}
 
-	capabilityRunFile := "/run/localai/capability"
-	if os.Getenv("LOCALAI_FORCE_META_BACKEND_CAPABILITY_RUN_FILE") != "" {
-		log.Debug().Str("LOCALAI_FORCE_META_BACKEND_CAPABILITY_RUN_FILE", os.Getenv("LOCALAI_FORCE_META_BACKEND_CAPABILITY_RUN_FILE")).Msg("Using forced capability run file")
-		capabilityRunFile = os.Getenv("LOCALAI_FORCE_META_BACKEND_CAPABILITY_RUN_FILE")
+	capabilityRunFile := "/run/maxgpt/capability"
+	if os.Getenv("MAXGPT_FORCE_META_BACKEND_CAPABILITY_RUN_FILE") != "" {
+		log.Debug().Str("MAXGPT_FORCE_META_BACKEND_CAPABILITY_RUN_FILE", os.Getenv("MAXGPT_FORCE_META_BACKEND_CAPABILITY_RUN_FILE")).Msg("Using forced capability run file")
+		capabilityRunFile = os.Getenv("MAXGPT_FORCE_META_BACKEND_CAPABILITY_RUN_FILE")
 	}
 
-	// Check if /run/localai/capability exists and use it
+	// Check if /run/maxgpt/capability exists and use it
 	// This might be used by e.g. container images to specify which
 	// backends to pull in automatically when installing meta backends.
 	if _, err := os.Stat(capabilityRunFile); err == nil {

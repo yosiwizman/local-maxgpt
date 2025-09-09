@@ -20,8 +20,8 @@ func New(opts ...config.AppOption) (*Application, error) {
 	options := config.NewApplicationConfig(opts...)
 	application := newApplication(options)
 
-	log.Info().Msgf("Starting LocalAI using %d threads, with models path: %s", options.Threads, options.ModelPath)
-	log.Info().Msgf("LocalAI version: %s", internal.PrintableVersion())
+	log.Info().Msgf("Starting MaxGPT using %d threads, with models path: %s", options.Threads, options.ModelPath)
+	log.Info().Msgf("MaxGPT version: %s", internal.PrintableVersion())
 	caps, err := xsysinfo.CPUCapabilities()
 	if err == nil {
 		log.Debug().Msgf("CPU capabilities: %v", caps)

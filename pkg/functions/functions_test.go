@@ -6,7 +6,7 @@ import (
 	. "github.com/onsi/gomega"
 )
 
-var _ = Describe("LocalAI grammar functions", func() {
+var _ = Describe("MaxGPT grammar functions", func() {
 	Describe("ToJSONStructure()", func() {
 		It("converts a list of functions to a JSON structure that can be parsed to a grammar", func() {
 			var functions Functions = []Function{

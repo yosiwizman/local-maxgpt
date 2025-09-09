@@ -26,8 +26,8 @@ type SoundGenerationCMD struct {
 	InputFileSampleDivisor string   `short:"f" help:"If InputFile and this divisor is specified, the first portion of the sample file will be used"`
 	DoSample               bool     `short:"s" default:"true" help:"Enables sampling from the model. Better quality at the cost of speed. Defaults to enabled."`
 	OutputFile             string   `short:"o" type:"path" help:"The path to write the output wav file"`
-	ModelsPath             string   `env:"LOCALAI_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
-	ExternalGRPCBackends   []string `env:"LOCALAI_EXTERNAL_GRPC_BACKENDS,EXTERNAL_GRPC_BACKENDS" help:"A list of external grpc backends" group:"backends"`
+	ModelsPath             string   `env:"MAXGPT_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
+	ExternalGRPCBackends   []string `env:"MAXGPT_EXTERNAL_GRPC_BACKENDS,EXTERNAL_GRPC_BACKENDS" help:"A list of external grpc backends" group:"backends"`
 }
 
 func parseToFloat32Ptr(input string) *float32 {

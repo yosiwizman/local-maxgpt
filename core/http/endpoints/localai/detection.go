@@ -11,7 +11,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-// DetectionEndpoint is the LocalAI Detection endpoint https://localai.io/docs/api-reference/detection
+// DetectionEndpoint is the MaxGPT Detection endpoint
 // @Summary Detects objects in the input image.
 // @Param request body schema.DetectionRequest true "query params"
 // @Success 200 {object} schema.DetectionResponse "Response"

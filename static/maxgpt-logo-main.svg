@@ -1,0 +1,16 @@
+<svg width="600" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="maxgptMainGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect x="20" y="20" width="160" height="160" rx="24" fill="url(#maxgptMainGradient)"/>
+  <text x="100" y="120" font-family="Arial, sans-serif" font-size="64" font-weight="bold" 
+        text-anchor="middle" fill="white">M</text>
+  <text x="220" y="120" font-family="Arial, sans-serif" font-size="72" font-weight="bold" 
+        fill="url(#maxgptMainGradient)">MaxGPT</text>
+  <rect x="520" y="80" width="60" height="30" rx="15" fill="rgba(167, 139, 250, 0.1)" stroke="#a78bfa" stroke-width="1"/>
+  <text x="550" y="100" font-family="Arial, sans-serif" font-size="14" font-weight="600" 
+        text-anchor="middle" fill="#a78bfa">BETA</text>
+</svg>

@@ -112,7 +112,7 @@
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/localai.GalleryModel"
+                            "$ref": "#/definitions/maxgpt.GalleryModel"
                         }
                     }
                 ],
@@ -1011,7 +1011,7 @@
                 }
             }
         },
-        "localai.GalleryModel": {
+        "maxgpt.GalleryModel": {
             "type": "object",
             "properties": {
                 "config_file": {

@@ -16,10 +16,10 @@ import (
 )
 
 type ModelsCMDFlags struct {
-	Galleries        string `env:"LOCALAI_GALLERIES,GALLERIES" help:"JSON list of galleries" group:"models" default:"${galleries}"`
-	BackendGalleries string `env:"LOCALAI_BACKEND_GALLERIES,BACKEND_GALLERIES" help:"JSON list of backend galleries" group:"backends" default:"${backends}"`
-	ModelsPath       string `env:"LOCALAI_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
-	BackendsPath     string `env:"LOCALAI_BACKENDS_PATH,BACKENDS_PATH" type:"path" default:"${basepath}/backends" help:"Path containing backends used for inferencing" group:"storage"`
+	Galleries        string `env:"MAXGPT_GALLERIES,GALLERIES" help:"JSON list of galleries" group:"models" default:"${galleries}"`
+	BackendGalleries string `env:"MAXGPT_BACKEND_GALLERIES,BACKEND_GALLERIES" help:"JSON list of backend galleries" group:"backends" default:"${backends}"`
+	ModelsPath       string `env:"MAXGPT_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
+	BackendsPath     string `env:"MAXGPT_BACKENDS_PATH,BACKENDS_PATH" type:"path" default:"${basepath}/backends" help:"Path containing backends used for inferencing" group:"storage"`
 }
 
 type ModelsList struct {
@@ -27,8 +27,8 @@ type ModelsList struct {
 }
 
 type ModelsInstall struct {
-	DisablePredownloadScan   bool     `env:"LOCALAI_DISABLE_PREDOWNLOAD_SCAN" help:"If true, disables the best-effort security scanner before downloading any files." group:"hardening" default:"false"`
-	AutoloadBackendGalleries bool     `env:"LOCALAI_AUTOLOAD_BACKEND_GALLERIES" help:"If true, automatically loads backend galleries" group:"backends" default:"true"`
+	DisablePredownloadScan   bool     `env:"MAXGPT_DISABLE_PREDOWNLOAD_SCAN" help:"If true, disables the best-effort security scanner before downloading any files." group:"hardening" default:"false"`
+	AutoloadBackendGalleries bool     `env:"MAXGPT_AUTOLOAD_BACKEND_GALLERIES" help:"If true, automatically loads backend galleries" group:"backends" default:"true"`
 	ModelArgs                []string `arg:"" optional:"" name:"models" help:"Model configuration URLs to load"`
 
 	ModelsCMDFlags `embed:""`

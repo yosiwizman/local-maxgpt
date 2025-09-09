@@ -33,12 +33,12 @@ func main() {
 	}()
 
 	// handle loading environment variabled from .env files
-	envFiles := []string{".env", "localai.env"}
+	envFiles := []string{".env", "maxgpt.env"}
 	homeDir, err := os.UserHomeDir()
 	if err == nil {
-		envFiles = append(envFiles, filepath.Join(homeDir, "localai.env"), filepath.Join(homeDir, ".config/localai.env"))
+		envFiles = append(envFiles, filepath.Join(homeDir, "maxgpt.env"), filepath.Join(homeDir, ".config/maxgpt.env"))
 	}
-	envFiles = append(envFiles, "/etc/localai.env")
+	envFiles = append(envFiles, "/etc/maxgpt.env")
 
 	for _, envFile := range envFiles {
 		if _, err := os.Stat(envFile); err == nil {
@@ -54,7 +54,7 @@ func main() {
 	// Actually parse the CLI options
 	ctx := kong.Parse(&cli.CLI,
 		kong.Description(
-			`  LocalAI is a drop-in replacement OpenAI API for running LLM, GPT and genAI models locally on CPU, GPUs with consumer grade hardware.
+			`  MaxGPT is a drop-in replacement OpenAI API for running LLM, GPT and genAI models locally on CPU, GPUs with consumer grade hardware.
 
 Some of the models compatible are:
   - Vicuna
@@ -65,9 +65,7 @@ Some of the models compatible are:
   - Alpaca
   - StableLM (ggml quantized)
 
-For a list of all available models for one-click install, check out: https://models.localai.io
-
-Copyright: Ettore Di Giacinto
+MaxGPT supports a wide range of AI models for local inference.
 
 Version: ${version}
 `,
@@ -75,8 +73,8 @@ Version: ${version}
 		kong.UsageOnError(),
 		kong.Vars{
 			"basepath":  kong.ExpandPath("."),
-			"galleries": `[{"name":"localai", "url":"github:mudler/LocalAI/gallery/index.yaml@master"}]`,
-			"backends":  `[{"name":"localai", "url":"github:mudler/LocalAI/backend/index.yaml@master"}]`,
+			"galleries": `[{"name":"maxgpt", "url":"github:yosiwizman/local-maxgpt/gallery/index.yaml@master"}]`,
+			"backends":  `[{"name":"maxgpt", "url":"github:yosiwizman/local-maxgpt/backend/index.yaml@master"}]`,
 			"version":   internal.PrintableVersion(),
 		},
 	)

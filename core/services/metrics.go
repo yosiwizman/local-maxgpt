@@ -10,12 +10,12 @@ import (
 	metricApi "go.opentelemetry.io/otel/sdk/metric"
 )
 
-type LocalAIMetricsService struct {
+type MaxGPTMetricsService struct {
 	Meter         metric.Meter
 	ApiTimeMetric metric.Float64Histogram
 }
 
-func (m *LocalAIMetricsService) ObserveAPICall(method string, path string, duration float64) {
+func (m *MaxGPTMetricsService) ObserveAPICall(method string, path string, duration float64) {
 	opts := metric.WithAttributes(
 		attribute.String("method", method),
 		attribute.String("path", path),
@@ -25,7 +25,7 @@ func (m *LocalAIMetricsService) ObserveAPICall(method string, path string, durat
 
 // setupOTelSDK bootstraps the OpenTelemetry pipeline.
 // If it does not return an error, make sure to call shutdown for proper cleanup.
-func NewLocalAIMetricsService() (*LocalAIMetricsService, error) {
+func NewMaxGPTMetricsService() (*MaxGPTMetricsService, error) {
 	exporter, err := prometheus.New()
 	if err != nil {
 		return nil, err
@@ -38,17 +38,17 @@ func NewLocalAIMetricsService() (*LocalAIMetricsService, error) {
 		return nil, err
 	}
 
-	return &LocalAIMetricsService{
+	return &MaxGPTMetricsService{
 		Meter:         meter,
 		ApiTimeMetric: apiTimeMetric,
 	}, nil
 }
 
-func (lams LocalAIMetricsService) Shutdown() error {
+func (lams MaxGPTMetricsService) Shutdown() error {
 	// TODO: Not sure how to actually do this:
 	//// setupOTelSDK bootstraps the OpenTelemetry pipeline.
 	//// If it does not return an error, make sure to call shutdown for proper cleanup.
 
-	log.Warn().Msgf("LocalAIMetricsService Shutdown called, but OTelSDK proper shutdown not yet implemented?")
+	log.Warn().Msgf("MaxGPTMetricsService Shutdown called, but OTelSDK proper shutdown not yet implemented?")
 	return nil
 }

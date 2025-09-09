@@ -23,7 +23,7 @@ type UtilCMD struct {
 	GGUFInfo         GGUFInfoCMD         `cmd:"" name:"gguf-info" help:"Get information about a GGUF file"`
 	CreateOCIImage   CreateOCIImageCMD   `cmd:"" name:"create-oci-image" help:"Create an OCI image from a file or a directory"`
 	HFScan           HFScanCMD           `cmd:"" name:"hf-scan" help:"Checks installed models for known security issues. WARNING: this is a best-effort feature and may not catch everything!"`
-	UsecaseHeuristic UsecaseHeuristicCMD `cmd:"" name:"usecase-heuristic" help:"Checks a specific model config and prints what usecase LocalAI will offer for it."`
+	UsecaseHeuristic UsecaseHeuristicCMD `cmd:"" name:"usecase-heuristic" help:"Checks a specific model config and prints what usecase MaxGPT will offer for it."`
 }
 
 type GGUFInfoCMD struct {
@@ -32,27 +32,27 @@ type GGUFInfoCMD struct {
 }
 
 type HFScanCMD struct {
-	ModelsPath string   `env:"LOCALAI_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
-	Galleries  string   `env:"LOCALAI_GALLERIES,GALLERIES" help:"JSON list of galleries" group:"models" default:"${galleries}"`
+	ModelsPath string   `env:"MAXGPT_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
+	Galleries  string   `env:"MAXGPT_GALLERIES,GALLERIES" help:"JSON list of galleries" group:"models" default:"${galleries}"`
 	ToScan     []string `arg:""`
 }
 
 type UsecaseHeuristicCMD struct {
 	ConfigName string `name:"The config file to check"`
-	ModelsPath string `env:"LOCALAI_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
+	ModelsPath string `env:"MAXGPT_MODELS_PATH,MODELS_PATH" type:"path" default:"${basepath}/models" help:"Path containing models used for inferencing" group:"storage"`
 }
 
 type CreateOCIImageCMD struct {
 	Input     []string `arg:"" help:"Input file or directory to create an OCI image from"`
 	Output    string   `default:"image.tar" help:"Output OCI image name"`
-	ImageName string   `default:"localai" help:"Image name"`
+	ImageName string   `default:"maxgpt" help:"Image name"`
 	Platform  string   `default:"linux/amd64" help:"Platform of the image"`
 }
 
 func (u *CreateOCIImageCMD) Run(ctx *cliContext.Context) error {
 	log.Info().Msg("Creating OCI image from input")
 
-	dir, err := os.MkdirTemp("", "localai")
+	dir, err := os.MkdirTemp("", "maxgpt")
 	if err != nil {
 		return err
 	}
@@ -108,7 +108,7 @@ func (u *GGUFInfoCMD) Run(ctx *cliContext.Context) error {
 }
 
 func (hfscmd *HFScanCMD) Run(ctx *cliContext.Context) error {
-	log.Info().Msg("LocalAI Security Scanner - This is BEST EFFORT functionality! Currently limited to huggingface models!")
+	log.Info().Msg("MaxGPT Security Scanner - This is BEST EFFORT functionality! Currently limited to huggingface models!")
 	if len(hfscmd.ToScan) == 0 {
 		log.Info().Msg("Checking all installed models against galleries")
 		var galleries []config.Gallery

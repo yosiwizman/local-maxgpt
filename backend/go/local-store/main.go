@@ -1,6 +1,6 @@
 package main
 
-// Note: this is started internally by LocalAI and a server is allocated for each store
+// Note: this is started internally by MaxGPT and a server is allocated for each store
 
 import (
 	"flag"

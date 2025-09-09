@@ -19,6 +19,6 @@ func RegisterJINARoutes(app *fiber.App,
 	// POST endpoint to mimic the reranking
 	app.Post("/v1/rerank",
 		re.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_RERANK)),
-		re.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.JINARerankRequest) }),
+		re.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.JINARerankRequest) }),
 		jina.JINARerankEndpoint(cl, ml, appConfig))
 }

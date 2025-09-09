@@ -264,6 +264,30 @@ WORKDIR /build
 
 COPY . .
 
+# Add MaxGPT branding files before building
+COPY ./static/maxgpt-complete-theme.css ./core/http/static/
+COPY ./static/maxgpt-favicon.svg ./core/http/static/favicon.svg
+COPY ./static/maxgpt-logo-horizontal.svg ./core/http/static/logo_horizontal.png
+COPY ./static/maxgpt-logo.svg ./core/http/static/logo.png
+
+# Apply comprehensive MaxGPT rebranding in source files before building
+RUN find ./core/http/views -name "*.html" -type f -exec sed -i 's/LocalAI/MaxGPT/g' {} \;
+RUN find ./core/http/static -name "*.js" -type f -exec sed -i 's/LocalAI/MaxGPT/g' {} \;
+RUN find ./core/http/static -name "*.css" -type f -exec sed -i 's/LocalAI/MaxGPT/g' {} \;
+RUN find . -name "*.go" -type f -exec sed -i 's/"LocalAI"/"MaxGPT"/g' {} \;
+RUN find . -name "*.go" -type f -exec sed -i 's/LocalAI API/MaxGPT API/g' {} \;
+RUN find . -name "*.go" -type f -exec sed -i 's/LocalAI is /MaxGPT is /g' {} \;
+RUN find . -name "*.go" -type f -exec sed -i 's/LocalAI act/MaxGPT act/g' {} \;
+
+# Remove creator references in source files
+RUN find ./core/http/views -name "*.html" -type f -exec sed -i '/Ettore Di Giacinto/d' {} \;
+RUN find ./core/http/views -name "*.html" -type f -exec sed -i '/mudler\.pm/d' {} \;
+RUN find . -name "*.go" -type f -exec sed -i '/Ettore Di Giacinto/d' {} \;
+
+# Update binary name references only in specific contexts
+RUN find . -name "*.go" -type f -exec sed -i 's/local-ai binary/maxgpt binary/g' {} \;
+RUN find . -name "*.go" -type f -exec sed -i 's/local-ai command/maxgpt command/g' {} \;
+
 ## Build the binary
 ## If we're on arm64 AND using cublas/hipblas, skip some of the llama-compat backends to save space
 ## Otherwise just run the normal build
@@ -308,6 +332,9 @@ COPY ./entrypoint.sh .
 
 # Copy the binary
 COPY --from=builder /build/local-ai ./
+
+# Install sed for text replacement and add MaxGPT branding
+RUN apt-get update && apt-get install -y sed && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Make sure the models directory exists
 RUN mkdir -p /models /backends

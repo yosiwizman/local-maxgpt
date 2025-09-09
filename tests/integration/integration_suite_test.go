@@ -10,8 +10,8 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-func TestLocalAI(t *testing.T) {
+func TestMaxGPT(t *testing.T) {
 	log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "LocalAI test suite")
+	RunSpecs(t, "MaxGPT test suite")
 }

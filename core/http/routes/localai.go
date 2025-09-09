@@ -12,7 +12,7 @@ import (
 	"github.com/mudler/LocalAI/pkg/model"
 )
 
-func RegisterLocalAIRoutes(router *fiber.App,
+func RegisterMaxGPTRoutes(router *fiber.App,
 	requestExtractor *middleware.RequestExtractor,
 	cl *config.BackendConfigLoader,
 	ml *model.ModelLoader,
@@ -21,7 +21,7 @@ func RegisterLocalAIRoutes(router *fiber.App,
 
 	router.Get("/swagger/*", swagger.HandlerDefault) // default
 
-	// LocalAI API endpoints
+	// MaxGPT API endpoints
 	if !appConfig.DisableGalleryEndpoint {
 		modelGalleryEndpointService := localai.CreateModelGalleryEndpointService(appConfig.Galleries, appConfig.BackendGalleries, appConfig.ModelPath, galleryService)
 		router.Post("/models/apply", modelGalleryEndpointService.ApplyModelGalleryEndpoint())
@@ -43,17 +43,17 @@ func RegisterLocalAIRoutes(router *fiber.App,
 
 	router.Post("/v1/detection",
 		requestExtractor.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_DETECTION)),
-		requestExtractor.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.DetectionRequest) }),
+		requestExtractor.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.DetectionRequest) }),
 		localai.DetectionEndpoint(cl, ml, appConfig))
 
 	router.Post("/tts",
 		requestExtractor.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_TTS)),
-		requestExtractor.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.TTSRequest) }),
+		requestExtractor.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.TTSRequest) }),
 		localai.TTSEndpoint(cl, ml, appConfig))
 
 	vadChain := []fiber.Handler{
 		requestExtractor.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_VAD)),
-		requestExtractor.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.VADRequest) }),
+		requestExtractor.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.VADRequest) }),
 		localai.VADEndpoint(cl, ml, appConfig),
 	}
 	router.Post("/vad", vadChain...)
@@ -66,12 +66,12 @@ func RegisterLocalAIRoutes(router *fiber.App,
 	router.Post("/stores/find", localai.StoresFindEndpoint(ml, appConfig))
 
 	if !appConfig.DisableMetrics {
-		router.Get("/metrics", localai.LocalAIMetricsEndpoint())
+		router.Get("/metrics", localai.MaxGPTMetricsEndpoint())
 	}
 
 	router.Post("/video",
 		requestExtractor.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_VIDEO)),
-		requestExtractor.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.VideoRequest) }),
+		requestExtractor.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.VideoRequest) }),
 		localai.VideoEndpoint(cl, ml, appConfig))
 
 	// Backend Statistics Module
@@ -98,7 +98,7 @@ func RegisterLocalAIRoutes(router *fiber.App,
 	// misc
 	router.Post("/v1/tokenize",
 		requestExtractor.BuildFilteredFirstAvailableDefaultModel(config.BuildUsecaseFilterFn(config.FLAG_TOKENIZE)),
-		requestExtractor.SetModelAndConfig(func() schema.LocalAIRequest { return new(schema.TokenizeRequest) }),
+		requestExtractor.SetModelAndConfig(func() schema.MaxGPTRequest { return new(schema.TokenizeRequest) }),
 		localai.TokenizeEndpoint(cl, ml, appConfig))
 
 }

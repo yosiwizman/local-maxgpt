@@ -59,8 +59,8 @@ func (mgs *ModelGalleryEndpointService) GetAllStatusEndpoint() func(c *fiber.Ctx
 	}
 }
 
-// ApplyModelGalleryEndpoint installs a new model to a LocalAI instance from the model gallery
-// @Summary Install models to LocalAI.
+// ApplyModelGalleryEndpoint installs a new model to a MaxGPT instance from the model gallery
+// @Summary Install models to MaxGPT.
 // @Param request body GalleryModel true "query params"
 // @Success 200 {object} schema.GalleryResponse "Response"
 // @Router /models/apply [post]
@@ -88,8 +88,8 @@ func (mgs *ModelGalleryEndpointService) ApplyModelGalleryEndpoint() func(c *fibe
 	}
 }
 
-// DeleteModelGalleryEndpoint lets delete models from a LocalAI instance
-// @Summary delete models to LocalAI.
+// DeleteModelGalleryEndpoint lets delete models from a MaxGPT instance
+// @Summary delete models to MaxGPT.
 // @Param name	path string	true	"Model name"
 // @Success 200 {object} schema.GalleryResponse "Response"
 // @Router /models/delete/{name} [post]
@@ -142,7 +142,7 @@ func (mgs *ModelGalleryEndpointService) ListModelFromGalleryEndpoint() func(c *f
 	}
 }
 
-// ListModelGalleriesEndpoint list the available galleries configured in LocalAI
+// ListModelGalleriesEndpoint list the available galleries configured in MaxGPT
 // @Summary List all Galleries
 // @Success 200 {object} []config.Gallery "Response"
 // @Router /models/galleries [get]

@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-var logLevel = strings.ToLower(os.Getenv("LOCALAI_P2P_LOGLEVEL"))
+var logLevel = strings.ToLower(os.Getenv("MAXGPT_P2P_LOGLEVEL"))
 
 const (
 	logLevelDebug = "debug"
